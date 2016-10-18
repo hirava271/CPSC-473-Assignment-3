@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <title>Assignment-3</title>
+    <script src=
+    "https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js">
+    </script>
+</head>
+<body>
+    <form>
+        <input id="arr" name="arr" placeholder="i.e. 1,2,3,4,5,6" type="text">
+        <input class="btn" type="button" value="average"> <input class="btn"
+        type="button" value="largestNoInArray"> <input class="btn" type=
+        "button" value="isOneEven"> <input class="btn" type="button" value=
+        "isAllEven"> <input class="btn" type="button" value="contains">
+        <input class="btn" type="button" value="containsTwice"><br>
+        <label id="answer">Answer:</label>
+    </form>
+    <div id="answerfinal">
+        <label id="answer"></label>
+    </div>
+    <script>
+        $(".btn").click(function(){
+        
+    var url=$(this).val();
+    var params=$("#arr").val().split(",");
+        
+    var data={
+        "array":params
+    }    
+    $.ajax({
+        method: "POST",
+        url: "http://localhost:3000/"+url,
+        crossDomain : true,
+        data: data
+        })
+        .done(function( msg ) {
+        if(msg.answer==false){
+            msg.answer="false";
+        }
+       $("#answerfinal").html(msg.answer);
+        });    
+    });
+    </script> 
+</body>
+</html>
