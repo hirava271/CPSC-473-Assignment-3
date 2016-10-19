@@ -9,7 +9,8 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(bodyParser.json());
 app.post('/average', function(req, res) {
-    var array = req.body['array[]'];
+
+    var array = req.body["array[]"];
     var sum = 0;
     array.forEach(function(entry) {
         sum += parseInt(entry);
@@ -73,3 +74,4 @@ app.post('/containsTwice', function(req, res) {
 });
 require('./routes/index')(app);
 app.listen(3000);
+console.log("Server listening on port 3000");

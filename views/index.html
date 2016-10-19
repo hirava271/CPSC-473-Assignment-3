@@ -24,14 +24,18 @@
         
     var url=$(this).val();
     var params=$("#arr").val().split(",");
-        
+    var dataJSON = params;
+
     var data={
-        "array":params
+        "array":dataJSON
     }    
+    
+    console.log(JSON.stringify(data));
     $.ajax({
         method: "POST",
         url: "http://localhost:3000/"+url,
         crossDomain : true,
+        dataType: "json",
         data: data
         })
         .done(function( msg ) {
